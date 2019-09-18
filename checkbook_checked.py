@@ -1,5 +1,8 @@
 import json
 import datetime
+import pandas as pd
+import numpy as np
+
 # Input and read in customer info based on customer_id
 def retrieve_customer_profile(customer_id):
 	customer_id = customer_id + '.json'
@@ -25,29 +28,34 @@ print("You have the following options:")
 print("1) view current balance")
 print("2) record a debit (withdraw)")
 print("3) record a credit (deposit)")
-print("4) exit")
+print("4) view your account summary")
+print("5) exit")
 
 def service_main(service_function):
 	service_function = int(service_function)
 	if service_function == 1:
-		print('Your current balance is: {:.2f}'.format(current_balance))
+		print('Your current balance is: {}{:.2f}'.format("$",current_balance))
 	elif service_function == 2:
 		get_entry_details()
 	elif service_function == 3:
 		get_entry_details()
 	elif service_function == 4:
+		df = pd.DataFrame(data) 
+		print(df)
+	elif service_function == 5:
 		print('Thanks for visiting!')
 	else:
 		print('Selection not valid.')
-		service_function = input("Please indicate your choice by entering 1 digit, from 1 through 4: ")
+		service_function = input("Please indicate your choice by entering 1 digit, from 1 through 5: ")
 		return service_function
-		service_function = input("Please indicate your choice by entering 1 digit, from 1 through 4: ")
+		service_function = input("Please indicate your choice by entering 1 digit, from 1 through 5: ")
 		return service_function
-		service_function = input("Please indicate your choice by entering 1 digit, from 1 through 4: ")
+		service_function = input("Please indicate your choice by entering 1 digit, from 1 through 5: ")
 		return service_function
 		
 
-service_function = input("Please indicate your choice by entering 1 digit, from 1 through 4: ")
+service_function = input("Please indicate your choice by entering 1 digit, from 1 through 5: ")
+
 
 # general number processing
 def process_num(b):
@@ -82,12 +90,13 @@ def add_entry(customer_id, transaction_id, amount, record_type, category, store,
 	data.append({"customer_id": customer_id, "transaction_id": transaction_id, "amount": amount, "record_type": record_type, "category": category,"store": store,"description": description})
 	if REC == "debit":
 		updated_balance = current_balance - amount
-		print("You've withdrawn {}".format(amount))
-		print('Your updated current balance is: {:.2f}'.format(updated_balance))
+		updated_balance = float(updated_balance)
+		print("You've withdrawn {}{}".format("$",amount))
+		print('Your updated current balance is: {}{:.2f}'.format("$",updated_balance))
 	elif REC == "credit":
-		print("You've deposited {}".format(amount))
+		print("You've deposited {}{}".format("$",amount))
 		updated_balance = current_balance + amount
-		print('Your updated current balance is: {:.2f}'.format(updated_balance))
+		print('Your updated current balance is: {}{:.2f}'.format("$",updated_balance))
 	return data
 def get_entry_details():
 	customer_id = data[0]["customer_id"]
