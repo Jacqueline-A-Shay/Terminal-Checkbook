@@ -27,16 +27,22 @@ print("4) exit")
 def service_main(service_function):
 	service_function = int(service_function)
 	if service_function == 1:
-		print('Your current balance is: ' + str(current_balance))
+		print('Your current balance is: {:.2f}'.format(current_balance))
 	elif service_function == 2:
+		# deduct how much
 		print('Your current balance is: ' + str(current_balance))
 	elif service_function == 3:
+		# increase how much
 		print('Your current balance is: ' + str(current_balance)) 
-	else:
+	elif service_function == 4:
 		print('Thanks for visiting!')
+	else:
+		print('Selection not valid.')
+		service_function = input("Please indicate your choice by entering 1 digit, from 1 through 4: ")
+		return service_function
+		
 
 service_function = input("Please indicate your choice by entering 1 digit, from 1 through 4: ")
-
 
 
 # general number processing
@@ -56,12 +62,16 @@ total_debit = sum(debit)
 current_balance = total_credit - total_debit
 current_balance
 
+
+service_main(service_function)
+
+
 # for writing debit and credit
 # take everything, calculate current_balance
 # credit, add to current_balance
 # debit, deduct from current balance
 
-service_main(service_function)
+
 
 
 
