@@ -256,9 +256,16 @@ dataset = [{'name': 'age', 'type': 'int', 'data': [20, 25, 43, 11, 15, 53, 36]},
 for feature in dataset:
     if feature['type'] == 'categorical' or feature['type'] == 'boolean':
         print('{} is not numeric, skipping'.format(feature['name']))
-        continue
+        continue # with the control flow, continue, skip the items that can't be calculated
     avg = sum(feature['data']) / len(feature['data'])
     print('{} average: {:.2f}'.format(feature['name'], avg))
+
+>>>
+age average: 29.00
+is_vegetarian is not numeric, skipping
+shoe size average: 8.86
+ISP is not numeric, skipping
+BMI average: 23.90
 
 
  ########################
@@ -274,6 +281,37 @@ for feature in dataset:
  'a' * 3 > 'aaa' 
  ### don't assume numbers are numbers, always check type or assing int or float if absolutely need a number
  max(['1','2','3','10']) > 3 #when it's string, it will be sorted alphabetically instead of number
+
+
+# double all with lambda and map
+# map(______,_________) rule map to target
+# if not holding the result in list, the result will be a generator object, not callable
+numbers = [1,2,3,4]
+result = list(map(lambda x: x + x , numbers))
+result
+
+# nested loop with list comp
+flattened = [n for row in matrix for n in row]
+
+flattened = []
+for row in matrix:
+	for n in row:
+		flattened.append(n)
+# get the first alphabet, but unique/non-repeatative (using set) for each word in a list of words
+words = ['apple','banana','bank']
+first_letter = set()
+for word in words:
+	first_letter.add(word[0])
+first_letter
+
+# get the list of first alphabet for each word in  a list of words
+first_lette = [w[0] for w in words]
+first_lette
+
+# turn list into set
+set(first_lette)
+
+
 
 
  pwd #right dir
