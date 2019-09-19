@@ -34,14 +34,14 @@ print("5) exit")
 def service_main(service_function):
 	service_function = int(service_function)
 	if service_function == 1:
-		print('Your current balance is: {}{:.2f}'.format("$",current_balance))
+		print('Your current balance is: ${:,.2f}'.format(current_balance))
 	elif service_function == 2:
 		get_entry_details()
 	elif service_function == 3:
 		get_entry_details()
 	elif service_function == 4:
 		df = pd.DataFrame(data)
-		print('Your current balance is: {}{:.2f}'.format("$",current_balance)) 
+		print('Your current balance is: ${:,.2f}'.format(current_balance)) 
 		print(df)
 	elif service_function == 5:
 		print('Thanks for visiting!')
@@ -93,11 +93,11 @@ def add_entry(customer_id, transaction_id, amount, record_type, category, store,
 		updated_balance = current_balance - amount
 		updated_balance = float(updated_balance)
 		print("You've withdrawn {}{}".format("$",amount))
-		print('Your updated current balance is: {}{:.2f}'.format("$",updated_balance))
+		print('Your updated current balance is: ${:,.2f}'.format(updated_balance))
 	elif REC == "credit":
 		print("You've deposited {}{}".format("$",amount))
 		updated_balance = current_balance + amount
-		print('Your updated current balance is: {}{:.2f}'.format("$",updated_balance))
+		print('Your updated current balance is: ${:,.2f}'.format(updated_balance))
 	return data
 def get_entry_details():
 	customer_id = data[0]["customer_id"]
