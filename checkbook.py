@@ -35,6 +35,16 @@ def service_main(service_function):
 	service_function = int(service_function)
 	if service_function == 1:
 		print('Your current balance is: ${:,.2f}'.format(current_balance))
+		other_request = input("Would you like to continue?  Please enter YES or NO.")
+		other_request = other_request.upper()
+		if other_request == "YES":
+			service_function = input("Please indicate your choice by entering 1 digit, from 1 through 5: ")
+			service_main(service_function)
+		elif other_request == "NO":
+			print("Thank you for banking with us!")
+			exit
+		else:
+			service_main(service_function)
 	elif service_function == 2:
 		get_entry_details()
 	elif service_function == 3:
@@ -47,12 +57,11 @@ def service_main(service_function):
 		print('Thanks for visiting!')
 	else:
 		print('Selection not valid.')
-		service_function = input("Please indicate your choice by entering 1 digit, from 1 through 5: ")
-		return service_function
-		service_function = input("Please indicate your choice by entering 1 digit, from 1 through 5: ")
-		return service_function
-		service_function = input("Please indicate your choice by entering 1 digit, from 1 through 5: ")
-		return service_function
+		while service_function not in {"1","2","3","4","5"}:
+			service_function = input("Please indicate your choice by entering 1 digit, from 1 through 5: ")
+			if service_function in {"1","2","3","4","5"}:
+				service_main(service_function)
+				
 		
 
 service_function = input("Please indicate your choice by entering 1 digit, from 1 through 5: ")
