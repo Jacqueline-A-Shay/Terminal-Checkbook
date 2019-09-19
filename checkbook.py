@@ -40,7 +40,8 @@ def service_main(service_function):
 	elif service_function == 3:
 		get_entry_details()
 	elif service_function == 4:
-		df = pd.DataFrame(data) 
+		df = pd.DataFrame(data)
+		print('Your current balance is: {}{:.2f}'.format("$",current_balance)) 
 		print(df)
 	elif service_function == 5:
 		print('Thanks for visiting!')
