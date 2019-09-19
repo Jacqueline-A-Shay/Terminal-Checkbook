@@ -44,11 +44,37 @@ def service_main(service_function):
 			print("Thank you for banking with us!")
 			exit
 		else:
+			print("Sorry, input error.")
+			service_function = input("Please indicate your choice by entering 1 digit, from 1 through 5: ")
 			service_main(service_function)
 	elif service_function == 2:
 		get_entry_details()
+		other_request = input("Would you like to continue?  Please enter YES or NO.")
+		other_request = other_request.upper()
+		if other_request == "YES":
+			service_function = input("Please indicate your choice by entering 1 digit, from 1 through 5: ")
+			service_main(service_function)
+		elif other_request == "NO":
+			print("Thank you for banking with us!")
+			exit
+		else:
+			print("Sorry, input error.")
+			service_function = input("Please indicate your choice by entering 1 digit, from 1 through 5: ")
+			service_main(service_function)
 	elif service_function == 3:
 		get_entry_details()
+		other_request = input("Would you like to continue?  Please enter YES or NO.")
+		other_request = other_request.upper()
+		if other_request == "YES":
+			service_function = input("Please indicate your choice by entering 1 digit, from 1 through 5: ")
+			service_main(service_function)
+		elif other_request == "NO":
+			print("Thank you for banking with us!")
+			exit
+		else:
+			print("Sorry, input error.")
+			service_function = input("Please indicate your choice by entering 1 digit, from 1 through 5: ")
+			service_main(service_function)
 	elif service_function == 4:
 		df = pd.DataFrame(data)
 		print('Your current balance is: ${:,.2f}'.format(current_balance)) 
@@ -101,10 +127,10 @@ def add_entry(customer_id, transaction_id, amount, record_type, category, store,
 	if REC == "debit":
 		updated_balance = current_balance - amount
 		updated_balance = float(updated_balance)
-		print("You've withdrawn {}{}".format("$",amount))
+		print("You've withdrawn ${:,.2f}".format(amount))
 		print('Your updated current balance is: ${:,.2f}'.format(updated_balance))
 	elif REC == "credit":
-		print("You've deposited {}{}".format("$",amount))
+		print("You've deposited ${:,.2f}".format(amount))
 		updated_balance = current_balance + amount
 		print('Your updated current balance is: ${:,.2f}'.format(updated_balance))
 	return data
@@ -113,10 +139,10 @@ def get_entry_details():
 	transaction_id = str(datetime.datetime.now())
 	amount = input("How much will the amount be? ")
 	record_type = REC
-	category = input("What's the category for this purchase?")
+	category = input("Would you like to add category for this change?")
 	if category == '':
 		category = 'null'
-	store = input("Which store did you shop with?")
+	store = input("For withdraw, what store did you shop with? For deposit, would you like to add a source?")
 	if store == '':
 		store = 'null'
 	description = input("Would you like to enter description for the transaction?")
